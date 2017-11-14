@@ -9,12 +9,15 @@ VAR_OUTPUT
 	angulo_output : REAL;
 END_VAR
 
-// dividir em 8 angulos
+// dividir em 6 angulos
 FUZZIFY angulo_origem
 	TERM sul := trape 205 270 270 335;	
 	TERM oeste := trape 115 180 180 245;
 	TERM leste := trape -45 0 0 65;
-	TERM norte := trape 25 90 90 155;
+	TERM norte := trape 85 90 90 100;
+	TERM noroeste := trape 95 130 130 155;
+	TERM nordeste := trape 25 50 50 90;
+
 END_FUZZIFY
 
 // {x1(0 - 0.2), x2(0.2 - 0.4), x3(0.4 - 0.6), x4(0.6 - 0.8, x5(0.8 - 1.0)}
@@ -51,30 +54,46 @@ RULEBLOCK regras
 	RULE 2 : IF posicao_x IS x_1 AND angulo_origem IS sul THEN angulo_output IS gn;
 	RULE 3 : IF posicao_x IS x_1 AND angulo_origem IS oeste THEN angulo_output IS gn;
 	RULE 4 : IF posicao_x IS x_1 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 5 : IF posicao_x IS x_1 AND angulo_origem IS nordeste THEN angulo_output IS mp;
+	RULE 6 : IF posicao_x IS x_1 AND angulo_origem IS noroeste THEN angulo_output IS mp;
+	
 
 	// segunda posicao x
-	RULE 5 : IF posicao_x IS x_2 AND angulo_origem IS norte THEN angulo_output IS mp;
-	RULE 6 : IF posicao_x IS x_2 AND angulo_origem IS sul THEN angulo_output IS gn;
-	RULE 7 : IF posicao_x IS x_2 AND angulo_origem IS oeste THEN angulo_output IS gn;
-	RULE 8 : IF posicao_x IS x_2 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 7 : IF posicao_x IS x_2 AND angulo_origem IS norte THEN angulo_output IS mp;
+	RULE 8 : IF posicao_x IS x_2 AND angulo_origem IS sul THEN angulo_output IS gn;
+	RULE 9 : IF posicao_x IS x_2 AND angulo_origem IS oeste THEN angulo_output IS gn;
+	RULE 10 : IF posicao_x IS x_2 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 11 : IF posicao_x IS x_2 AND angulo_origem IS nordeste THEN angulo_output IS mp;
+	RULE 12 : IF posicao_x IS x_2 AND angulo_origem IS noroeste THEN angulo_output IS mp;
 
 	// terceira posicao x
-	RULE 9 : IF posicao_x IS x_3 AND angulo_origem IS norte THEN angulo_output IS mn;
-	RULE 10 : IF posicao_x IS x_3 AND angulo_origem IS sul THEN angulo_output IS gp;
-	RULE 11 : IF posicao_x IS x_3 AND angulo_origem IS oeste THEN angulo_output IS gn;
-	RULE 12 : IF posicao_x IS x_3 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 13 : IF posicao_x IS x_3 AND angulo_origem IS norte THEN angulo_output IS pn;
+	RULE 14 : IF posicao_x IS x_3 AND angulo_origem IS sul THEN angulo_output IS gp;
+	RULE 15 : IF posicao_x IS x_3 AND angulo_origem IS oeste THEN angulo_output IS gn;
+	RULE 16 : IF posicao_x IS x_3 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 17 : IF posicao_x IS x_3 AND angulo_origem IS nordeste THEN angulo_output IS mp;
+	RULE 18 : IF posicao_x IS x_3 AND angulo_origem IS noroeste THEN angulo_output IS mn;
 
 	// quarta posicao x
-	RULE 13 : IF posicao_x IS x_4 AND angulo_origem IS norte THEN angulo_output IS mn;
-	RULE 14 : IF posicao_x IS x_4 AND angulo_origem IS sul THEN angulo_output IS gp;
-	RULE 15 : IF posicao_x IS x_4 AND angulo_origem IS oeste THEN angulo_output IS gn;
-	RULE 16 : IF posicao_x IS x_4 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 19 : IF posicao_x IS x_4 AND angulo_origem IS norte THEN angulo_output IS mn;
+	RULE 20 : IF posicao_x IS x_4 AND angulo_origem IS sul THEN angulo_output IS gp;
+	RULE 21 : IF posicao_x IS x_4 AND angulo_origem IS oeste THEN angulo_output IS gn;
+	RULE 22 : IF posicao_x IS x_4 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 23 : IF posicao_x IS x_4 AND angulo_origem IS nordeste THEN angulo_output IS mn;
+	RULE 24 : IF posicao_x IS x_4 AND angulo_origem IS noroeste THEN angulo_output IS mn;
 
 	// quinta posicao x
-	RULE 17 : IF posicao_x IS x_5 AND angulo_origem IS norte THEN angulo_output IS mn;
-	RULE 18 : IF posicao_x IS x_5 AND angulo_origem IS sul THEN angulo_output IS gp;
-	RULE 19 : IF posicao_x IS x_5 AND angulo_origem IS oeste THEN angulo_output IS gn;
-	RULE 20 : IF posicao_x IS x_5 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 25 : IF posicao_x IS x_5 AND angulo_origem IS norte THEN angulo_output IS mn;
+	RULE 26 : IF posicao_x IS x_5 AND angulo_origem IS sul THEN angulo_output IS gp;
+	RULE 27 : IF posicao_x IS x_5 AND angulo_origem IS oeste THEN angulo_output IS gn;
+	RULE 28 : IF posicao_x IS x_5 AND angulo_origem IS leste THEN angulo_output IS gp;
+	RULE 29 : IF posicao_x IS x_5 AND angulo_origem IS nordeste THEN angulo_output IS mn;
+	RULE 30 : IF posicao_x IS x_5 AND angulo_origem IS noroeste THEN angulo_output IS mn;
+	
+	
+	
+	
+	
 
 END_RULEBLOCK
 
